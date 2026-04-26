@@ -19,8 +19,7 @@ class AddAlarmTop extends StatelessWidget {
             color: AppColors.textSecondary,
           ),
         ),
-
-        const Spacer(),
+        Spacer(),
 
         Text(
           'Add Alarm',
@@ -30,18 +29,13 @@ class AddAlarmTop extends StatelessWidget {
             color: AppColors.addAlarmTitle,
           ),
         ),
+        Spacer(),
 
-        const Spacer(),
-
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            'Reset',
-            style: AppTextStyles.bodyLarge(context).copyWith(
-              fontWeight: FontWeight.w600,
-              color: AppColors.addAlarmAction,
-            ),
-          ),
+        IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(null, size: 28, color: AppColors.textSecondary),
         ),
       ],
     );

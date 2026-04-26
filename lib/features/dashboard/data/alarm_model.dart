@@ -1,4 +1,5 @@
 class AlarmModel {
+  final String? id;
   final int hour;
   final int minute;
   final bool isAm;
@@ -10,6 +11,7 @@ class AlarmModel {
   final bool isActive;
 
   const AlarmModel({
+    this.id,
     required this.hour,
     required this.minute,
     required this.isAm,
@@ -29,23 +31,37 @@ class AlarmModel {
 
   String get period => isAm ? 'AM' : 'PM';
 
-  int get totalMinutes {
-    int convertedHour = hour;
+  Map<String, dynamic> toMap() {
+    return {
+      'hour': hour,
+      'minute': minute,
+      'isAm': isAm,
+      'days': days,
+      'isSnoozeOn': isSnoozeOn,
+      'isVibrateOn': isVibrateOn,
+      'label': label,
+      'tone': tone,
+      'isActive': isActive,
+    };
+  }
 
-    if (isAm) {
-      if (convertedHour == 12) {
-        convertedHour = 0;
-      }
-    } else {
-      if (convertedHour != 12) {
-        convertedHour += 12;
-      }
-    }
-
-    return convertedHour * 60 + minute;
+  factory AlarmModel.fromMap(Map<dynamic, dynamic> map, {String? id}) {
+    return AlarmModel(
+      id: id,
+      hour: map['hour'] ?? 0,
+      minute: map['minute'] ?? 0,
+      isAm: map['isAm'] ?? true,
+      days: List<bool>.from(map['days'] ?? []),
+      isSnoozeOn: map['isSnoozeOn'] ?? false,
+      isVibrateOn: map['isVibrateOn'] ?? false,
+      label: map['label'] ?? 'Alarm',
+      tone: map['tone'] ?? 'Default',
+      isActive: map['isActive'] ?? true,
+    );
   }
 
   AlarmModel copyWith({
+    String? id,
     int? hour,
     int? minute,
     bool? isAm,
@@ -57,6 +73,7 @@ class AlarmModel {
     bool? isActive,
   }) {
     return AlarmModel(
+      id: id ?? this.id,
       hour: hour ?? this.hour,
       minute: minute ?? this.minute,
       isAm: isAm ?? this.isAm,
@@ -69,40 +86,3 @@ class AlarmModel {
     );
   }
 }
-
-List<AlarmModel> alarms = [
-  const AlarmModel(
-    hour: 07,
-    minute: 30,
-    label: 'Wake Up',
-    isActive: true,
-    days: [false, true, true, true, true, false, false],
-    tone: '',
-    isAm: true,
-    isSnoozeOn: false,
-    isVibrateOn: true,
-  ),
-  const AlarmModel(
-    hour: 07,
-    minute: 30,
-    label: 'Wake Up',
-    isActive: true,
-    days: [false, true, true, true, true, false, false],
-    tone: '',
-    isAm: true,
-    isSnoozeOn: false,
-    isVibrateOn: true,
-  ),
-
-  const AlarmModel(
-    hour: 05,
-    minute: 59,
-    label: 'Wake Up',
-    isActive: true,
-    days: [false, true, true, true, true, false, false],
-    tone: '',
-    isAm: true,
-    isSnoozeOn: false,
-    isVibrateOn: true,
-  ),
-];

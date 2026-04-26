@@ -53,6 +53,15 @@ abstract final class AppTextStyles {
     );
   }
 
+  static TextStyle roboto20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w700,
+      fontFamily: 'Roboto',
+      color: AppColors.textPrimary,
+    );
+  }
+
   static TextStyle dialogTitle(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 22),
@@ -260,10 +269,10 @@ abstract final class AppTextStyles {
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   final double width = MediaQuery.of(context).size.width;
-  final double scaleFactor = width / 390;
+  final double scaleFactor = width / 480;
   final double responsiveFontSize = fontSize * scaleFactor;
 
-  final double lowerLimit = fontSize * 0.85;
+  final double lowerLimit = fontSize * 0.6;
   final double upperLimit = fontSize * 1.15;
 
   return responsiveFontSize.clamp(lowerLimit, upperLimit);

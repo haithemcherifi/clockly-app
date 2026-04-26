@@ -34,13 +34,13 @@ class QuickAccessCard extends StatelessWidget {
             border: Border.all(color: borderColor),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(icon, size: 30, color: iconColor),
-                const SizedBox(height: 19),
+                Icon(icon, size: 25, color: iconColor),
+                const SizedBox(height: 13),
                 Text(
                   label,
                   style: AppTextStyles.cardTitle(context).copyWith(

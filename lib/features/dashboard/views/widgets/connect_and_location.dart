@@ -1,6 +1,10 @@
 import 'package:clockly_app/core/utils/app_color.dart';
 import 'package:clockly_app/core/utils/app_styles.dart';
+
+import 'package:clockly_app/features/main/presentation/view/,manager/cubit/cubit/location_cubit.dart';
+import 'package:clockly_app/features/main/presentation/view/,manager/cubit/cubit/location_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConnectedAndLocation extends StatelessWidget {
   const ConnectedAndLocation({super.key});
@@ -47,12 +51,17 @@ class ConnectedAndLocation extends StatelessWidget {
               color: AppColors.dashboardHeaderMeta,
             ),
             const SizedBox(width: 6),
-            Text(
-              'London, UK',
-              style: AppTextStyles.bodyMedium(context).copyWith(
-                fontWeight: FontWeight.w500,
-                color: AppColors.dashboardHeaderTitle,
-              ),
+            BlocBuilder<LocationCubit, LocationState>(
+              builder: (context, state) {
+                return Text(
+                  state.locationText,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodyMedium(context).copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.dashboardHeaderTitle,
+                  ),
+                );
+              },
             ),
           ],
         ),

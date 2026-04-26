@@ -22,8 +22,8 @@ class NavItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: isSelected ? 20 : 12,
-          vertical: 10,
+          horizontal: isSelected ? 18 : 11,
+          vertical: 8,
         ),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.bottomNavSelected : Colors.transparent,
@@ -34,7 +34,7 @@ class NavItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 24,
+              size: 21,
               color: isSelected
                   ? AppColors.bottomNavSelectedText
                   : AppColors.bottomNavUnselected,

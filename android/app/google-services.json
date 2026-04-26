@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "544463686322",
+    "project_id": "clockly-4f120",
+    "storage_bucket": "clockly-4f120.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544463686322:android:9a2b1597d5c5b82cd417ab",
+        "android_client_info": {
+          "package_name": "com.example.clockly_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRgDq5eilwrNpRzK-9s1Q4W6xR6YTTWe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,14 +21,16 @@ class QuickAccess extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 12),
+        SizedBox(height: 15),
+
         GridView.count(
+          padding: EdgeInsets.zero,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 18,
-          childAspectRatio: 1.4,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 10,
+          childAspectRatio: 1.55,
           children: [
             QuickAccessCard(
               icon: Icons.alarm,

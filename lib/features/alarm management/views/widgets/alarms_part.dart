@@ -1,3 +1,4 @@
+import 'package:clockly_app/features/add%20alarm/views/add_alarm.dart';
 import 'package:clockly_app/features/alarm%20management/views/widgets/alarm_card.dart';
 import 'package:clockly_app/features/dashboard/data/alarm_model.dart';
 import 'package:clockly_app/features/alarm%20management/manager/cubit/alarm_cubit.dart';
@@ -20,11 +21,37 @@ class AlarmsPart extends StatelessWidget {
           itemBuilder: (context, index) {
             final alarm = alarms[index];
 
-            return AlarmCard(
-              alarm: alarm,
-              onChanged: (value) {
-                context.read<AlarmCubit>().toggleAlarm(index, value);
+            return Dismissible(
+              key: ValueKey(alarm.id ?? index),
+              direction: DismissDirection.endToStart,
+              onDismissed: (_) {
+                context.read<AlarmCubit>().removeAlarm(index);
               },
+              background: Container(
+                alignment: Alignment.centerRight,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: const Icon(Icons.delete, color: Colors.white),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => AddAlarm(alarm: alarm, alarmIndex: index),
+                    ),
+                  );
+                },
+                child: AlarmCard(
+                  alarm: alarm,
+                  onChanged: (value) {
+                    context.read<AlarmCubit>().toggleAlarm(index, value);
+                  },
+                ),
+              ),
             );
           },
         );

@@ -37,7 +37,7 @@ class SettingsPart extends StatelessWidget {
         SettingTile(
           icon: Icons.label,
           title: 'Label',
-          subtitle: 'Morning Gym',
+          subtitle: alarmLabel,
           onTap: onLabelTap,
         ),
         const SizedBox(height: 5),

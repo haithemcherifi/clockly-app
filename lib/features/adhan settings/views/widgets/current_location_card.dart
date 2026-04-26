@@ -1,11 +1,13 @@
 import 'package:clockly_app/core/utils/app_color.dart';
 import 'package:clockly_app/core/utils/app_styles.dart';
+
+import 'package:clockly_app/features/main/presentation/view/,manager/cubit/cubit/location_cubit.dart';
+import 'package:clockly_app/features/main/presentation/view/,manager/cubit/cubit/location_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CurrentLocationCard extends StatelessWidget {
-  const CurrentLocationCard({super.key, required this.currentLocation});
-
-  final String currentLocation;
+  const CurrentLocationCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +46,17 @@ class CurrentLocationCard extends StatelessWidget {
               color: AppColors.softSurface,
               borderRadius: BorderRadius.circular(14),
             ),
-            child: Text(
-              currentLocation,
-              style: AppTextStyles.bodyLarge(context).copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.locationValue,
-              ),
+            child: BlocBuilder<LocationCubit, LocationState>(
+              builder: (context, state) {
+                return Text(
+                  state.locationText,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodyLarge(context).copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.locationValue,
+                  ),
+                );
+              },
             ),
           ),
           const SizedBox(height: 10),

@@ -78,6 +78,8 @@ class AlarmCard extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             alarm.label,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
             style: AppTextStyles.bodyMedium(context).copyWith(
               color: alarm.isActive
                   ? AppColors.alarmLabel
